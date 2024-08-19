@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var context
+    @State private var isActive = false
+    @State private var myFavoriteLocations: [MyFavoriteLocation] = []
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if isActive {
+            LocationPreviewView(myFavoriteLocations: $myFavoriteLocations)
+        }else {
+            SplashScreen(isActive: $isActive, myFavoriteLocations: $myFavoriteLocations)
         }
-        .padding()
     }
 }
 

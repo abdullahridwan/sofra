@@ -6,7 +6,9 @@
 //
 
 import XCTest
+import SwiftData
 
+@MainActor
 final class HalalEatsTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -31,5 +33,5 @@ final class HalalEatsTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
+
