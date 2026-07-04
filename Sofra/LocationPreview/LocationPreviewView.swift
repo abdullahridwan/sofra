@@ -42,9 +42,8 @@ struct LocationPreviewView: View {
                 }
             }
             .id(mapID)
-            .onAppear {
-                locationManager.requestWhenInUseAuthorization()
-            }
+            .onAppear { locationManager.requestWhenInUseAuthorization() }
+            .mapControls { MapUserLocationButton() }
 
             FavoritesButton(showFavoritesSheet: $showFavoritesSheet, searchText: $searchText)
         }
