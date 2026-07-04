@@ -2,38 +2,32 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Base Map - Sofra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
-<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --bg:#FFFFFF; --surface:#F6F4F2; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; --red:#E62336; --blue:#007AFF; }
-@media (prefers-color-scheme: dark) { :root { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; } }
-:root[data-theme="light"] { --bg:#FFFFFF; --surface:#F6F4F2; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; }
-:root[data-theme="dark"]  { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; }
+:root { --bg:#FFFFFF; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; --red:#E62336; }
+@media (prefers-color-scheme: dark) { :root { --bg:#191210; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; } }
+:root[data-theme="light"] { --bg:#FFFFFF; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; }
+:root[data-theme="dark"]  { --bg:#191210; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; }
 
-html, body { height: 100%; overflow: hidden; font-family: 'Inter', -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--text); }
+html, body { height: 100%; overflow: hidden; font-family: 'Inter', -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: var(--bg); }
 
-#map { position: absolute; inset: 0; }
+#map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-.maplibregl-ctrl-attrib { font-size: 9px !important; opacity: 0.45 !important; }
-.maplibregl-ctrl-group { border: 1px solid var(--border) !important; box-shadow: 0 2px 12px rgba(0,0,0,.1) !important; border-radius: 10px !important; overflow: hidden; }
-.maplibregl-ctrl-group button { background: var(--bg) !important; border-bottom: 1px solid var(--border) !important; }
-.maplibregl-ctrl-group button:last-child { border-bottom: none !important; }
-.maplibregl-ctrl-group button span { filter: invert(0); }
-
-/* Header */
 .header {
   position: absolute;
-  top: 14px; left: 14px; right: 14px;
+  top: 14px; left: 14px;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 .wordmark {
   font-family: 'Fraunces', Georgia, serif;
@@ -47,182 +41,16 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', -apple-system
   border-radius: 12px;
   box-shadow: 0 2px 14px rgba(0,0,0,.1);
   border: 1px solid var(--border);
-  white-space: nowrap;
-}
-.search-wrap { flex: 1; position: relative; }
-.search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
-#search {
-  width: 100%;
-  padding: 11px 14px 11px 36px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 2px 14px rgba(0,0,0,.1);
-  outline: none;
-  -webkit-appearance: none;
-}
-#search::placeholder { color: var(--muted); }
-#search:focus { border-color: var(--red); }
-
-/* Card */
-.card {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 20;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  border-radius: 20px 20px 0 0;
-  padding: 20px 20px 40px;
-  box-shadow: 0 -4px 32px rgba(0,0,0,.1);
-  transform: translateY(100%);
-  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
-}
-.card.open { transform: translateY(0); }
-.card-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 18px; }
-.card-name { font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); margin-bottom: 4px; }
-.card-address { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
-.card-directions {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: var(--blue); color: #fff;
-  font-size: 14px; font-weight: 600;
-  padding: 12px 20px; border-radius: 12px; text-decoration: none;
-}
-
-@media (min-width: 600px) {
-  .card {
-    left: auto; right: 20px; bottom: 20px;
-    width: 320px; border-radius: 16px;
-    border: 1px solid var(--border);
-    transform: translateY(12px); opacity: 0; pointer-events: none;
-    transition: transform 0.22s ease, opacity 0.22s ease;
-  }
-  .card.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-  .card-handle { display: none; }
 }
 </style>
 </head>
 <body>
 
-<div id="map"></div>
+<iframe id="map" src="https://www.google.com/maps/d/embed?mid=1Pqgctzd1TbpfYLfOnLXEgiTVRLpwuj4&ehbc=2E312F" allowfullscreen></iframe>
 
 <div class="header">
   <a href="/" class="wordmark">Sofra</a>
-  <div class="search-wrap">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input id="search" type="search" placeholder="Search spots..." autocomplete="off" autocorrect="off" spellcheck="false">
-  </div>
 </div>
 
-<div class="card" id="card">
-  <div class="card-handle"></div>
-  <div class="card-name" id="card-name"></div>
-  <div class="card-address" id="card-address"></div>
-  <a class="card-directions" id="card-directions" href="#" target="_blank" rel="noopener">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12l19-9-9 19-2-8-8-2z"/></svg>
-    Directions
-  </a>
-</div>
-
-<script>
-const RED = '#E62336';
-let allSpots = [];
-
-const map = new maplibregl.Map({
-  container: 'map',
-  style: 'https://tiles.openfreemap.org/styles/positron',
-  center: [-74.006, 40.7128],
-  zoom: 11.5,
-  pitchWithRotate: true,
-});
-
-map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-right');
-
-const card = document.getElementById('card');
-const cardName = document.getElementById('card-name');
-const cardAddress = document.getElementById('card-address');
-const cardDirections = document.getElementById('card-directions');
-const search = document.getElementById('search');
-
-function toGeoJSON(spots) {
-  return {
-    type: 'FeatureCollection',
-    features: spots.map(s => ({
-      type: 'Feature',
-      geometry: { type: 'Point', coordinates: [s.longitude, s.latitude] },
-      properties: { name: s.name, address: s.address }
-    }))
-  };
-}
-
-function openCard(props, coords) {
-  cardName.textContent = props.name;
-  cardAddress.textContent = props.address;
-  cardDirections.href = `https://maps.apple.com/?daddr=${encodeURIComponent(props.address)}&dirflg=d`;
-  card.classList.add('open');
-  if (window.innerWidth < 600) map.easeTo({ center: coords, offset: [0, -120] });
-}
-
-function closeCard() { card.classList.remove('open'); }
-
-map.on('load', () => {
-  map.addSource('spots', { type: 'geojson', data: toGeoJSON([]) });
-
-  map.addLayer({
-    id: 'spots-shadow',
-    type: 'circle',
-    source: 'spots',
-    paint: {
-      'circle-radius': 9,
-      'circle-color': 'rgba(0,0,0,0.15)',
-      'circle-translate': [0, 2],
-      'circle-blur': 1,
-    }
-  });
-
-  map.addLayer({
-    id: 'spots',
-    type: 'circle',
-    source: 'spots',
-    paint: {
-      'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 5, 15, 9],
-      'circle-color': RED,
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#ffffff',
-    }
-  });
-
-  map.on('click', 'spots', e => {
-    const f = e.features[0];
-    openCard(f.properties, f.geometry.coordinates);
-  });
-
-  map.on('click', e => {
-    const hits = map.queryRenderedFeatures(e.point, { layers: ['spots'] });
-    if (!hits.length) closeCard();
-  });
-
-  map.on('mouseenter', 'spots', () => map.getCanvas().style.cursor = 'pointer');
-  map.on('mouseleave', 'spots', () => map.getCanvas().style.cursor = '');
-
-  fetch('/api/spots')
-    .then(r => r.json())
-    .then(data => {
-      allSpots = data;
-      map.getSource('spots').setData(toGeoJSON(allSpots));
-    });
-});
-
-search.addEventListener('input', () => {
-  const q = search.value.toLowerCase().trim();
-  const filtered = q
-    ? allSpots.filter(s => s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q))
-    : allSpots;
-  if (map.getSource('spots')) map.getSource('spots').setData(toGeoJSON(filtered));
-  closeCard();
-});
-</script>
 </body>
 </html>
