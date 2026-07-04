@@ -349,6 +349,46 @@
     color: var(--muted);
   }
 
+  /* SCREENSHOTS */
+  .screenshots-strip {
+    padding: 72px 0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .screenshots-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .screenshots-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 12px 40px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .screenshots-scroll::-webkit-scrollbar { display: none; }
+  .screenshot-frame {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    width: 220px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px var(--border);
+    transition: transform 0.2s;
+  }
+  .screenshot-frame:hover { transform: translateY(-4px); }
+  .screenshot-frame img {
+    width: 100%;
+    display: block;
+  }
+
   @media (max-width: 700px) {
     nav { padding: 16px 20px; }
     .nav-links li:not(:last-child) { display: none; }
@@ -360,6 +400,7 @@
     .privacy-section { padding: 64px 24px; }
     .support-section { padding: 64px 24px; }
     footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+    .screenshots-scroll { padding: 12px 20px 24px; }
   }
 </style>
 
@@ -386,6 +427,17 @@
     Download on the App Store
   </a>
 </section>
+
+<div class="screenshots-strip">
+  <p class="screenshots-label">See it in action</p>
+  <div class="screenshots-scroll">
+    <div class="screenshot-frame"><img src="../AppStore/screenshots-1284x2778/01-splash-intro.png" alt="Sofra splash screen" loading="lazy"></div>
+    <div class="screenshot-frame"><img src="../AppStore/screenshots-1284x2778/02-map-overview.png" alt="Map overview of halal spots" loading="lazy"></div>
+    <div class="screenshot-frame"><img src="../AppStore/screenshots-1284x2778/03-borough-coverage.png" alt="All five boroughs covered" loading="lazy"></div>
+    <div class="screenshot-frame"><img src="../AppStore/screenshots-1284x2778/04-pin-details.png" alt="Location pin details" loading="lazy"></div>
+    <div class="screenshot-frame"><img src="../AppStore/screenshots-1284x2778/05-look-around.png" alt="Look Around street view" loading="lazy"></div>
+  </div>
+</div>
 
 <div class="stats">
   <div class="stat">
