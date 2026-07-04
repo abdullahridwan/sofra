@@ -18,7 +18,7 @@ struct LocationPreviewView: View {
     @Binding var mapPosition: MapCameraPosition
     @State var showFavoritesSheet = false
     @State private var locationManager = CLLocationManager()
-    @State private var isAtUserLocation = true
+    @State private var isAtUserLocation = false
 
     var searchResults: [MyFavoriteLocation] {
         guard !searchText.isEmpty else { return [] }
