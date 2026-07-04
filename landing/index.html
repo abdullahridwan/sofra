@@ -6,59 +6,476 @@
 <title>Sofra - Halal Food NYC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --bg:#FFFFFF; --surface:#F6F4F2; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; --red:#E62336; --blue:#007AFF; }
-@media (prefers-color-scheme: dark) { :root { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; } }
-:root[data-theme="light"] { --bg:#FFFFFF; --surface:#F6F4F2; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; --blue:#007AFF; }
-:root[data-theme="dark"]  { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; }
 
-html, body { height: 100%; }
-body {
-  background: var(--bg); color: var(--text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  min-height: 100dvh; padding: 40px 24px; position: relative; overflow: hidden;
-}
-body::before {
-  content: ''; position: fixed; inset: 0;
-  background-image: radial-gradient(circle, rgba(43,35,32,.07) 1.5px, transparent 1.5px);
-  background-size: 30px 30px; pointer-events: none; z-index: 0;
+:root {
+  --bg: #FFFFFF;
+  --surface: #F6F4F2;
+  --border: #E7E3DE;
+  --text: #2B2320;
+  --muted: #7A6F66;
+  --red: #E62336;
+  --blue: #007AFF;
 }
 @media (prefers-color-scheme: dark) {
-  body::before { background-image: radial-gradient(circle, rgba(237,232,228,.05) 1.5px, transparent 1.5px); }
+  :root { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; }
 }
-.page { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 600px; width: 100%; }
-.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 28px; }
-h1 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-size: clamp(88px, 18vw, 148px); font-weight: 300; line-height: 0.9; letter-spacing: -0.03em; color: var(--text); margin-bottom: 32px; }
-.tagline { font-size: clamp(15px, 2vw, 18px); color: var(--muted); line-height: 1.7; max-width: 380px; margin-bottom: 48px; }
-.tagline strong { color: var(--text); font-weight: 500; }
-.cta { display: inline-flex; align-items: center; gap: 9px; background: var(--text); color: var(--bg); font-size: 15px; font-weight: 600; padding: 14px 26px; border-radius: 14px; text-decoration: none; transition: opacity 0.15s, transform 0.15s; }
-.cta:hover { opacity: 0.85; transform: translateY(-1px); }
-.footer-note { position: fixed; bottom: 28px; left: 0; right: 0; display: flex; justify-content: center; gap: 32px; z-index: 1; }
-.footer-note a { font-size: 12px; font-weight: 500; color: var(--muted); text-decoration: none; opacity: 0.7; cursor: pointer; }
-.footer-note a:hover { opacity: 1; }
-@media (max-width: 480px) { .footer-note { gap: 20px; bottom: 20px; } }
+:root[data-theme="light"] { --bg:#FFFFFF; --surface:#F6F4F2; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; }
+:root[data-theme="dark"]  { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; }
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 56px;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--text); }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--text);
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+}
+.nav-cta:hover { opacity: 0.8; }
+
+/* HERO */
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(43,35,32,.065) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+@media (prefers-color-scheme: dark) {
+  .hero::before { background-image: radial-gradient(circle, rgba(237,232,228,.05) 1.5px, transparent 1.5px); }
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(96px, 20vw, 160px);
+  font-weight: 300;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 28px;
+  position: relative;
+}
+.hero-sub {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 360px;
+  margin-bottom: 48px;
+}
+.hero-sub strong { color: var(--text); font-weight: 500; }
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 26px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
+.btn-secondary:hover { color: var(--text); }
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.35;
+  animation: float 2s ease-in-out infinite;
+}
+.scroll-hint span { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
+@keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+/* SCREENSHOTS */
+.screenshots {
+  padding: 96px 0 112px;
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+.section-header {
+  padding: 0 40px;
+  margin-bottom: 56px;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--text);
+  max-width: 480px;
+  text-wrap: balance;
+}
+.phones-track {
+  display: flex;
+  gap: 24px;
+  padding: 16px 40px 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.phones-track:active { cursor: grabbing; }
+.phones-track::-webkit-scrollbar { display: none; }
+.phone-wrap {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 200px;
+}
+.phone-frame {
+  width: 200px;
+  border-radius: 34px;
+  border: 2px solid color-mix(in srgb, var(--text) 15%, transparent);
+  overflow: hidden;
+  box-shadow: 0 32px 72px rgba(0,0,0,.14), 0 0 0 1px color-mix(in srgb, var(--text) 8%, transparent);
+  background: var(--surface);
+  position: relative;
+}
+.phone-frame img { width: 100%; display: block; }
+.phone-caption {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  padding: 0 4px;
+}
+
+/* BASE MAP */
+.basemap {
+  border-top: 1px solid var(--border);
+  padding: 96px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.basemap-text .section-label { margin-bottom: 12px; }
+.basemap-text .section-title { margin-bottom: 20px; }
+.basemap-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 400px;
+}
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--red);
+  padding: 13px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.btn-map:hover { opacity: 0.88; }
+.basemap-preview {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 64px rgba(0,0,0,.1);
+  aspect-ratio: 4/3;
+  background: var(--surface);
+  position: relative;
+}
+.map-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.map-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(43,35,32,.04);
+}
+.map-thumb-pill {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.foot-logo { font-family:'Fraunces',Georgia,serif; font-size:17px; font-weight:300; color:var(--text); }
+.foot-links { display:flex; gap:24px; }
+.foot-links a { font-size:12px; font-weight:500; color:var(--muted); text-decoration:none; }
+.foot-links a:hover { color:var(--text); }
+.foot-copy { font-size:12px; color:var(--muted); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-right .nav-link { display: none; }
+  .section-header { padding: 0 24px; }
+  .phones-track { padding: 16px 24px 32px; }
+  .basemap { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px; }
+  .basemap-preview { display: none; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+  .foot-links { justify-content: center; }
+}
 </style>
 </head>
 <body>
 
-<div class="page">
+<nav>
+  <a href="/" class="nav-logo">Sofra</a>
+  <div class="nav-right">
+    <a href="/map" class="nav-link">Base Map</a>
+    <a href="/privacy" class="nav-link">Privacy</a>
+    <a href="https://apps.apple.com" class="nav-cta">App Store</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
   <p class="eyebrow">Halal food, mapped in NYC</p>
   <h1>Sofra</h1>
-  <p class="tagline"><strong>Halal food, mapped across all five boroughs.</strong> No accounts, no ads.</p>
-  <a href="/map" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;margin-bottom:20px" id="map-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4zM8 2v16M16 6v16"/></svg>Browse the map</a><br><br><a href="https://apps.apple.com" class="cta">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Download on the App Store
-  </a>
-</div>
+  <p class="hero-sub"><strong>Halal spots across all five boroughs.</strong> No accounts, no ads.</p>
+  <div class="hero-actions">
+    <a href="https://apps.apple.com" class="btn-primary">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
+    </a>
+    <a href="/map" class="btn-secondary">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4zM8 2v16M16 6v16"/></svg>
+      Browse the Base Map
+    </a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
 
-<nav class="footer-note">
-  <a href="/privacy">Privacy Policy</a>
+<!-- SCREENSHOTS -->
+<section class="screenshots">
+  <div class="section-header">
+    <p class="section-label">The App</p>
+    <h2 class="section-title">Built for how you actually find food in New York.</h2>
+  </div>
+  <div class="phones-track" id="track">
+    <div class="phone-wrap">
+      <div class="phone-frame"><img src="/screenshots/02-map-overview.png" alt="Map overview" loading="lazy"></div>
+      <p class="phone-caption">All spots on the map</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-frame"><img src="/screenshots/04-pin-details.png" alt="Location details" loading="lazy"></div>
+      <p class="phone-caption">Tap for details and directions</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-frame"><img src="/screenshots/05-look-around.png" alt="Look Around" loading="lazy"></div>
+      <p class="phone-caption">Look Around before you go</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-frame"><img src="/screenshots/03-borough-coverage.png" alt="Borough coverage" loading="lazy"></div>
+      <p class="phone-caption">All five boroughs</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-frame"><img src="/screenshots/01-splash-intro.png" alt="Splash screen" loading="lazy"></div>
+      <p class="phone-caption">Sofra</p>
+    </div>
+  </div>
+</section>
 
-</nav>
+<!-- BASE MAP -->
+<section class="basemap">
+  <div class="basemap-text">
+    <p class="section-label">Base Map</p>
+    <h2 class="section-title">All the spots, right in your browser.</h2>
+    <p class="basemap-desc">No app needed. Browse and search every halal spot on an interactive map. The app gives you the full experience — this gets you started.</p>
+    <a href="/map" class="btn-map">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4zM8 2v16M16 6v16"/></svg>
+      Open Base Map
+    </a>
+  </div>
+  <div class="basemap-preview">
+    <svg width="100%" height="100%" viewBox="0 0 680 510" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+      <rect width="680" height="510" fill="#F6F4F2"/>
+      <!-- grid lines -->
+      <g stroke="#E7E3DE" stroke-width="1">
+        <line x1="0" y1="85" x2="680" y2="85"/><line x1="0" y1="170" x2="680" y2="170"/>
+        <line x1="0" y1="255" x2="680" y2="255"/><line x1="0" y1="340" x2="680" y2="340"/>
+        <line x1="0" y1="425" x2="680" y2="425"/>
+        <line x1="113" y1="0" x2="113" y2="510"/><line x1="226" y1="0" x2="226" y2="510"/>
+        <line x1="339" y1="0" x2="339" y2="510"/><line x1="452" y1="0" x2="452" y2="510"/>
+        <line x1="565" y1="0" x2="565" y2="510"/>
+      </g>
+      <!-- roads -->
+      <g stroke="#DEDAD5" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M0,200 Q170,190 340,210 T680,200"/>
+        <path d="M0,320 Q200,310 400,330 T680,315"/>
+        <path d="M200,0 Q210,170 195,340 T205,510"/>
+        <path d="M440,0 Q450,130 435,300 T445,510"/>
+        <path d="M0,110 Q250,130 500,105 T680,115"/>
+        <path d="M320,0 Q310,255 325,510"/>
+      </g>
+      <!-- pins -->
+      <circle cx="180" cy="195" r="5" fill="#E62336"/>
+      <circle cx="310" cy="270" r="5" fill="#E62336"/>
+      <circle cx="420" cy="160" r="5" fill="#E62336"/>
+      <circle cx="520" cy="300" r="5" fill="#E62336"/>
+      <circle cx="250" cy="350" r="5" fill="#E62336"/>
+      <circle cx="370" cy="390" r="5" fill="#E62336"/>
+      <circle cx="140" cy="310" r="5" fill="#E62336"/>
+      <circle cx="580" cy="200" r="5" fill="#E62336"/>
+      <circle cx="460" cy="390" r="5" fill="#E62336"/>
+      <circle cx="90" cy="140" r="5" fill="#E62336"/>
+      <circle cx="600" cy="420" r="5" fill="#E62336"/>
+      <circle cx="340" cy="120" r="5" fill="#E62336"/>
+    </svg>
+    <div class="map-thumb-overlay">
+      <div class="map-thumb-pill">
+        <div class="dot"></div>
+        Live map
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-logo">Sofra</span>
+  <div class="foot-links">
+    <a href="/map">Base Map</a>
+    <a href="/privacy">Privacy Policy</a>
+  </div>
+  <span class="foot-copy">2026 Sofra</span>
+</footer>
+
+<script>
+  // Drag to scroll on the phone strip
+  const track = document.getElementById('track');
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+  track.addEventListener('mouseleave', () => isDown = false);
+  track.addEventListener('mouseup', () => isDown = false);
+  track.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX);
+  });
+</script>
 
 </body>
 </html>
