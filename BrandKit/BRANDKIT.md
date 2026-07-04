@@ -14,7 +14,7 @@ Set in Fraunces, medium weight, tight tracking. Use on the splash screen, market
 
 ![Icon mark](icon-mark.png)
 
-A bold Fraunces "S," terracotta on white, bled to the edges of the frame rather than centered with heavy padding. This is the source for the App Store icon (see `HalalEats/Assets.xcassets/AppIcon.appiconset`). Flat square, no pre-baked corner rounding, no alpha channel, iOS applies its own mask.
+A bold Fraunces "S," terracotta on white, bled to the edges of the frame rather than centered with heavy padding. This is the source for the App Store icon (see `Sofra/Assets.xcassets/AppIcon.appiconset`). Flat square, no pre-baked corner rounding, no alpha channel, iOS applies its own mask.
 
 ## Color
 
@@ -40,7 +40,7 @@ Both are variable fonts (`Fraunces-Variable.ttf`, `Inter-Variable.ttf` in this f
 
 ## Where this is wired into the app
 
-`HalalEats/Theme.swift` is the single source of truth in code, `SofraTheme` exposes the colors above and `SofraTheme.Typography` exposes the two type roles. Applied in:
+`Sofra/Theme.swift` is the single source of truth in code, `SofraTheme` exposes the colors above and `SofraTheme.Typography` exposes the two type roles. Applied in:
 
 - `SplashScreen.swift` — wordmark, background
 - `LocationPreview/LocationPreviewView.swift` — map marker tint (primary / favorite)

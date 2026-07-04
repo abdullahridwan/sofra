@@ -11,7 +11,7 @@ A halal restaurant map for NYC. Browse the map, favorite spots, get directions, 
 Pre-launch. Core app works end to end; a few things are intentionally not built yet. If you're picking this up, here's the real state:
 
 **Working**
-- Map of ~120 halal spots across Brooklyn, Queens, Manhattan, and the Bronx, seeded from `HalalEats/locations.json`
+- Map of ~120 halal spots across Brooklyn, Queens, Manhattan, and the Bronx, seeded from `Sofra/locations.json`
 - Tap a pin → name, address, a Look Around preview, favorite toggle, and a "Directions" button that opens Apple Maps
 - Favorites list
 - Brand identity (icon, fonts, colors) fully wired into the app, see [`BrandKit/`](BrandKit/)
@@ -26,13 +26,13 @@ Pre-launch. Core app works end to end; a few things are intentionally not built 
 
 - SwiftUI + MapKit (native `Map`/`Marker`, no third-party map SDK)
 - SwiftData for persistence (`MyFavoriteLocation`, seeded from the bundled JSON on first launch)
-- Fraunces (display) + Inter (body/UI), both variable fonts, registered at runtime, see `HalalEats/Theme.swift`
+- Fraunces (display) + Inter (body/UI), both variable fonts, registered at runtime, see `Sofra/Theme.swift`
 
 ## Project structure
 
 ```
-HalalEats/
-  HalalEatsApp.swift          entry point, registers custom fonts on launch
+Sofra/
+  SofraApp.swift          entry point, registers custom fonts on launch
   ContentView.swift            splash → map root
   SplashScreen.swift            loads locations.json into SwiftData on first run
   Theme.swift                  brand colors + typography, single source of truth in code
@@ -46,7 +46,7 @@ BrandKit/                     brand reference: wordmark, icon export, palette + 
 
 ## Getting started
 
-1. Clone and open `HalalEats.xcodeproj` in Xcode (15.3+, iOS 17.4+ deployment target)
+1. Clone and open `Sofra.xcodeproj` in Xcode (15.3+, iOS 17.4+ deployment target)
 2. Build and run on a simulator or device, no API keys or config needed, everything is local (bundled JSON + native MapKit)
 
 ## Brand kit
