@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../Fraunces-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../Inter-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1320px; height: 2868px; }
+body { font-family: 'Inter', sans-serif; }
+.canvas {
+  width: 1320px;
+  height: 2868px;
+  background: #F6F4F2;
+  display: flex;
+  flex-direction: column;
+  padding: 96px 100px 90px;
+}
+.wordmark {
+  font-family: 'Fraunces';
+  font-weight: 600;
+  font-size: 68px;
+  color: #2B2320;
+  letter-spacing: -0.02em;
+  margin-bottom: 52px;
+}
+.headline {
+  font-family: 'Fraunces';
+  font-weight: 500;
+  font-size: 100px;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #2B2320;
+  max-width: 1120px;
+  margin-bottom: 64px;
+}
+.headline .accent { color: #E62336; }
+.phone {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phone img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 72px;
+  box-shadow:
+    0 55px 110px -20px rgba(43, 35, 32, 0.35),
+    0 18px 38px -12px rgba(43, 35, 32, 0.22);
+}
