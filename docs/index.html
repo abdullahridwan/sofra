@@ -49,17 +49,6 @@ h1 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-size: clam
 .footer-note { position: fixed; bottom: 28px; left: 0; right: 0; display: flex; justify-content: center; gap: 32px; z-index: 1; }
 .footer-note a { font-size: 12px; font-weight: 500; color: var(--muted); text-decoration: none; opacity: 0.7; cursor: pointer; }
 .footer-note a:hover { opacity: 1; }
-.modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,.5); }
-.modal-overlay.open { display: flex; }
-.modal-box { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; max-width: 540px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 40px; }
-.modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-.modal-title { font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 300; letter-spacing: -0.02em; color: var(--text); }
-.modal-close { background: var(--surface); border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 20px; color: var(--muted); display: flex; align-items: center; justify-content: center; }
-.modal-date { font-size: 12px; color: var(--muted); margin-bottom: 28px; }
-.policy-blocks { display: flex; flex-direction: column; gap: 24px; }
-.policy-block h3 { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text); margin-bottom: 6px; }
-.policy-block p { font-size: 14px; line-height: 1.75; color: var(--muted); }
-.policy-block a { color: var(--blue); text-decoration: none; }
 @media (max-width: 480px) { .footer-note { gap: 20px; bottom: 20px; } }
 </style>
 </head>
@@ -68,7 +57,7 @@ h1 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-size: clam
 <div class="page">
   <p class="eyebrow">Halal food, mapped in NYC</p>
   <h1>Sofra</h1>
-  <p class="tagline"><strong>130+ verified halal spots</strong> across all five boroughs, updated daily. No accounts, no ads.</p>
+  <p class="tagline"><strong>Halal food, mapped across all five boroughs.</strong> No accounts, no ads.</p>
   <a href="https://apps.apple.com/app/sofra-halal-food-nyc" class="cta">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
     Download on the App Store
@@ -76,27 +65,10 @@ h1 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-size: clam
 </div>
 
 <nav class="footer-note">
-  <a onclick="document.getElementById('privacy').classList.add('open')">Privacy Policy</a>
+  <a href="privacy.html">Privacy Policy</a>
   <a href="mailto:abdullahridwan73@gmail.com">Support</a>
   <a href="https://apps.apple.com/app/sofra-halal-food-nyc">App Store</a>
 </nav>
-
-<div id="privacy" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="modal-box">
-    <div class="modal-head">
-      <span class="modal-title">Privacy Policy</span>
-      <button class="modal-close" onclick="document.getElementById('privacy').classList.remove('open')">&times;</button>
-    </div>
-    <p class="modal-date">Last updated July 4, 2026</p>
-    <div class="policy-blocks">
-      <div class="policy-block"><h3>Your location</h3><p>When you grant permission, Sofra uses your device location to center the map. Your location is processed on-device only and is never stored, transmitted, or shared.</p></div>
-      <div class="policy-block"><h3>Your favorites</h3><p>Restaurants you bookmark are saved locally on your device using Apple SwiftData. This data never leaves your device.</p></div>
-      <div class="policy-block"><h3>What we never do</h3><p>No user accounts. No analytics. No advertising. No sale of data to third parties.</p></div>
-      <div class="policy-block"><h3>Restaurant data</h3><p>The app loads restaurant names, addresses, and coordinates from Supabase. No personal information is included in these requests.</p></div>
-      <div class="policy-block"><h3>Contact</h3><p><a href="mailto:abdullahridwan73@gmail.com">abdullahridwan73@gmail.com</a></p></div>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>

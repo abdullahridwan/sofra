@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Sofra</title>
+<style>
+@font-face { font-family:'Fraunces'; src:url('../BrandKit/Fraunces-Variable.ttf') format('truetype'); font-weight:100 900; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../BrandKit/Inter-Variable.ttf') format('truetype'); font-weight:100 900; font-display:swap; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#FFFFFF;--surface:#F6F4F2;--border:#E7E3DE;--text:#2B2320;--muted:#7A6F66;--red:#E62336;--blue:#007AFF}
+@media(prefers-color-scheme:dark){:root{--bg:#191210;--surface:#231816;--border:#352A26;--text:#EDE8E4;--muted:#8A7A72;--blue:#4DA3FF}}
+:root[data-theme="light"]{--bg:#FFFFFF;--surface:#F6F4F2;--border:#E7E3DE;--text:#2B2320;--muted:#7A6F66}
+:root[data-theme="dark"]{--bg:#191210;--surface:#231816;--border:#352A26;--text:#EDE8E4;--muted:#8A7A72;--blue:#4DA3FF}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding:64px 24px 80px;max-width:600px;margin:0 auto}
+a.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;margin-bottom:48px;opacity:.7}
+a.back:hover{opacity:1}
+h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(36px,6vw,52px);font-weight:300;letter-spacing:-.025em;color:var(--text);margin-bottom:8px}
+.date{font-size:12px;color:var(--muted);margin-bottom:48px}
+.blocks{display:flex;flex-direction:column;gap:32px}
+.block h2{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:8px}
+.block p{font-size:15px;line-height:1.8;color:var(--muted)}
+.block a{color:var(--blue);text-decoration:none}
+.block a:hover{text-decoration:underline}
+hr{border:none;border-top:1px solid var(--border);margin:48px 0}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+  Sofra
+</a>
+
+<h1>Privacy Policy</h1>
+<p class="date">Last updated July 4, 2026</p>
+
+<div class="blocks">
+  <div class="block">
+    <h2>Your location</h2>
+    <p>When you grant permission, Sofra uses your device location to center the map. Your location is processed on-device only and is never stored, transmitted, or shared with anyone.</p>
+  </div>
+  <div class="block">
+    <h2>Your favorites</h2>
+    <p>Restaurants you bookmark are saved locally on your device using Apple SwiftData. This data never leaves your device.</p>
+  </div>
+  <div class="block">
+    <h2>What we never do</h2>
+    <p>No user accounts or sign-in. No analytics or usage tracking. No advertising or ad networks. No sale of data to third parties.</p>
+  </div>
+  <div class="block">
+    <h2>Restaurant data</h2>
+    <p>The app loads restaurant names, addresses, and coordinates from Supabase, a database service. No personal information is included in these requests.</p>
+  </div>
+  <hr>
+  <div class="block">
+    <h2>Contact</h2>
+    <p>Questions about this policy: <a href="mailto:abdullahridwan73@gmail.com">abdullahridwan73@gmail.com</a></p>
+  </div>
+</div>
+
+</body>
+</html>
