@@ -33,8 +33,8 @@ Deliberately not green. Every other halal-discovery app in this space defaults t
 
 ## Typography
 
-- **Display** — Fraunces, medium/semibold weight. Restaurant names, headers, the wordmark. Warm serif, carries the brand's personality.
-- **Body / Label** — Inter, regular/medium weight. Addresses, buttons, captions, anything functional. Neutral and highly legible.
+- **Display**: Fraunces, medium/semibold weight. Restaurant names, headers, the wordmark. Warm serif, carries the brand's personality.
+- **Body / Label**: Inter, regular/medium weight. Addresses, buttons, captions, anything functional. Neutral and highly legible.
 
 Both are variable fonts (`Fraunces-Variable.ttf`, `Inter-Variable.ttf` in this folder), registered at runtime in the app via `Theme.swift` / `FontRegistrar`, no static weight files needed.
 
@@ -42,9 +42,9 @@ Both are variable fonts (`Fraunces-Variable.ttf`, `Inter-Variable.ttf` in this f
 
 `Sofra/Theme.swift` is the single source of truth in code, `SofraTheme` exposes the colors above and `SofraTheme.Typography` exposes the two type roles. Applied in:
 
-- `SplashScreen.swift` — wordmark, background
-- `LocationPreview/LocationPreviewView.swift` — map marker tint (primary / favorite)
-- `SingleLocationView/SingleLocationView.swift` — restaurant name, address, directions button
-- `FavoritesButton.swift`, `FavoritesView.swift` — favorite heart, empty state
+- `SplashScreen.swift`: wordmark, background
+- `LocationPreview/LocationPreviewView.swift`: map marker tint (primary / favorite)
+- `SingleLocationView/SingleLocationView.swift`: restaurant name, address, directions button
+- `FavoritesButton.swift`, `FavoritesView.swift`: favorite heart, empty state
 
 If the palette or type scale changes, update `Theme.swift` and this file together so they don't drift.

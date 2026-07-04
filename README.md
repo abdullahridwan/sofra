@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="BrandKit/banner.png" alt="Sofra — halal food, mapped" width="100%" />
+  <img src="BrandKit/banner.png" alt="Sofra: halal food, mapped" width="100%" />
 </p>
 
 # Sofra

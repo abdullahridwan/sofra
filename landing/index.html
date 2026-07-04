@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sofra: halal food, mapped</title>
+<meta name="description" content="A halal restaurant map for NYC. Join the waitlist, we'll email you the moment it's live on the App Store." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-background: #FFFFFF;
+    --color-text: #2B2320;
+    --color-text-muted: #7A6F66;
+    --color-primary: #C1502E;
+    --color-border: #E7E3DE;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: "Inter", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  main {
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: "Fraunces", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 64px;
+    margin: 0 0 12px;
+    line-height: 1;
+    color: var(--color-text);
+  }
+
+  .tagline {
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0 0 32px;
+    letter-spacing: 0.01em;
+  }
+
+  p.pitch {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0 0 32px;
+  }
+
+  form {
+    display: flex;
+    gap: 8px;
+  }
+
+  input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    outline: none;
+    color: var(--color-text);
+    background: var(--color-background);
+  }
+
+  input[type="email"]:focus {
+    border-color: var(--color-primary);
+  }
+
+  button {
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    color: #fff;
+    background: var(--color-primary);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  button:hover:not(:disabled) {
+    background: #9C3F24;
+  }
+
+  #message {
+    margin-top: 16px;
+    font-size: 14px;
+    min-height: 20px;
+  }
+
+  #message.success { color: var(--color-primary); }
+  #message.error { color: #B5323F; }
+
+  footer {
+    margin-top: 48px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Sofra</h1>
+    <p class="tagline">halal food, mapped in NYC</p>
+    <p class="pitch">
+      A map of halal restaurants across every borough, no guesswork about what's actually halal.
+      We're finishing up on the App Store, join the waitlist and we'll email you the moment it's live.
+    </p>
+    <form id="waitlist-form">
+      <input
+        id="email"
+        type="email"
+        name="email"
+        placeholder="you@email.com"
+        required
+        autocomplete="email"
+      />
+      <button type="submit" id="submit-button">Join waitlist</button>
+    </form>
+    <div id="message"></div>
+    <footer>Sofra &middot; New York City</footer>
+  </main>
+
+  <script>
+    const SUPABASE_URL = "https://zswxjecwcqgypcfktpdq.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_8X24zZRBpGMgZtNBpaR2sQ_VtxKJKkE";
+
+    const form = document.getElementById("waitlist-form");
+    const emailInput = document.getElementById("email");
+    const button = document.getElementById("submit-button");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      button.disabled = true;
+      button.textContent = "Joining...";
+      message.textContent = "";
+      message.className = "";
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${SUPABASE_KEY}`,
+            "Prefer": "return=minimal",
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        if (res.ok) {
+          message.textContent = "You're on the list. We'll email you at launch.";
+          message.className = "success";
+          form.reset();
+          button.textContent = "Joined";
+        } else if (res.status === 409) {
+          message.textContent = "You're already on the list.";
+          message.className = "success";
+          button.disabled = false;
+          button.textContent = "Join waitlist";
+        } else {
+          throw new Error("request failed");
+        }
+      } catch (err) {
+        message.textContent = "Something went wrong, try again in a moment.";
+        message.className = "error";
+        button.disabled = false;
+        button.textContent = "Join waitlist";
+      }
+    });
+  </script>
+</body>
+</html>
