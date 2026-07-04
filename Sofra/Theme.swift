@@ -27,9 +27,9 @@ enum SofraTheme {
     static let border = Color(hex: "#E7E3DE")
     static let text = Color(hex: "#2B2320")
     static let textMuted = Color(hex: "#7A6F66")
-    static let primary = Color(hex: "#C1502E")
-    static let primaryDark = Color(hex: "#9C3F24")
-    static let favorite = Color(hex: "#B5323F")
+    static let primary = Color(hex: "#E62336")
+    static let primaryDark = Color(hex: "#B51C2C")
+    static let blue = Color(hex: "#007AFF")
 
     enum Typography {
         static func display(_ size: CGFloat, weight: Font.Weight = .medium) -> Font {

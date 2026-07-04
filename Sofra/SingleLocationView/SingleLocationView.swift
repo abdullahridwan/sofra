@@ -28,12 +28,9 @@ struct SingleLocationView: View {
                             print("In isFavorited Button")
                             print("\(item.name) is \(item.isFavorited)")
                             item.isFavorited.toggle()
-                            print("\(item.name) is \(item.isFavorited)")
-                            print("---")
-                            //try? context.save()
                         }) {
-                            Image(systemName: item.isFavorited ? "heart.fill" : "heart")
-                                .foregroundColor(item.isFavorited ? SofraTheme.favorite : SofraTheme.textMuted)
+                            Image(systemName: item.isFavorited ? "bookmark.fill" : "bookmark")
+                                .foregroundColor(item.isFavorited ? SofraTheme.blue : SofraTheme.textMuted)
                         }
                     }
                     Text(item.address)
@@ -48,9 +45,9 @@ struct SingleLocationView: View {
 
                     } label: {
                         Text("Directions")
-                            .font(SofraTheme.Typography.label(14, weight: .semibold))
+                            .font(SofraTheme.Typography.label(14))
                     }
-                    .foregroundColor(SofraTheme.primary)
+                    .foregroundColor(SofraTheme.blue)
                 }
                 Spacer()
             }

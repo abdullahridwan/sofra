@@ -14,7 +14,7 @@ Set in Fraunces, medium weight, tight tracking. Use on the splash screen, market
 
 ![Icon mark](icon-mark.png)
 
-A bold Fraunces "S," terracotta on white, bled to the edges of the frame rather than centered with heavy padding. This is the source for the App Store icon (see `Sofra/Assets.xcassets/AppIcon.appiconset`). Flat square, no pre-baked corner rounding, no alpha channel, iOS applies its own mask.
+A bold Fraunces "S," red on white, bled to the edges of the frame rather than centered with heavy padding. This is the source for the App Store icon (see `Sofra/Assets.xcassets/AppIcon.appiconset`). Flat square, no pre-baked corner rounding, no alpha channel, iOS applies its own mask.
 
 ## Color
 
@@ -25,11 +25,11 @@ A bold Fraunces "S," terracotta on white, bled to the edges of the frame rather 
 | Border | `#E7E3DE` | Hairline dividers/borders |
 | Text | `#2B2320` | Primary text (warm charcoal, not pure black) |
 | Text Muted | `#7A6F66` | Secondary text, addresses, captions |
-| Primary | `#C1502E` | Terracotta brand accent, buttons, active states, icon mark |
-| Primary Dark | `#9C3F24` | Pressed/dark state of primary |
-| Favorite | `#B5323F` | Heart/favorite indicator only, kept distinct from Primary so it doesn't compete with the brand accent |
+| Primary | `#E62336` | Vivid red — the brand accent. Map pins, active states, any brand moment |
+| Primary Dark | `#B51C2C` | Pressed/dark state of primary |
+| Blue | `#007AFF` | Apple-standard blue — bookmarked map pins, bookmark icons, Directions button |
 
-Deliberately not green. Every other halal-discovery app in this space defaults to green; terracotta is the one thing designed to make Sofra recognizable at a glance in a row of App Store icons.
+Two functional accents — red and blue — do all the work. Red owns brand moments and regular map pins. Blue is the action/navigation color: bookmarks, directions, anything the user does. Keep them separate; don't swap their roles.
 
 ## Typography
 
@@ -42,9 +42,10 @@ Both are variable fonts (`Fraunces-Variable.ttf`, `Inter-Variable.ttf` in this f
 
 `Sofra/Theme.swift` is the single source of truth in code, `SofraTheme` exposes the colors above and `SofraTheme.Typography` exposes the two type roles. Applied in:
 
-- `SplashScreen.swift`: wordmark, background
-- `LocationPreview/LocationPreviewView.swift`: map marker tint (primary / favorite)
-- `SingleLocationView/SingleLocationView.swift`: restaurant name, address, directions button
-- `FavoritesButton.swift`, `FavoritesView.swift`: favorite heart, empty state
+- `SplashScreen.swift` — wordmark, background
+- `LocationPreview/LocationPreviewView.swift` — map pin tint (primary for regular, blue for bookmarked); search filters visible pins
+- `SingleLocationView/SingleLocationView.swift` — restaurant name (text), address (textMuted), bookmark toggle (blue/textMuted), directions button (blue)
+- `FavoritesButton.swift` — Sofra wordmark pill (text/background), expandable search bar, bookmark bubble (blue)
+- `FavoritesView.swift` — bookmarked locations list
 
 If the palette or type scale changes, update `Theme.swift` and this file together so they don't drift.
