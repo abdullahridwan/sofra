@@ -3,30 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Map - Sofra</title>
+<title>Base Map - Sofra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --bg:#FFFFFF; --surface:#F6F4F2; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; --red:#E62336; --blue:#007AFF; }
 @media (prefers-color-scheme: dark) { :root { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; } }
+:root[data-theme="light"] { --bg:#FFFFFF; --surface:#F6F4F2; --border:#E7E3DE; --text:#2B2320; --muted:#7A6F66; }
+:root[data-theme="dark"]  { --bg:#191210; --surface:#231816; --border:#352A26; --text:#EDE8E4; --muted:#8A7A72; --blue:#4DA3FF; }
 
-html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Inter', -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: var(--bg); }
+html, body { height: 100%; overflow: hidden; font-family: 'Inter', -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--text); }
 
-#map { position: absolute; inset: 0; z-index: 0; }
+#map { position: absolute; inset: 0; }
 
-/* Hide Leaflet attribution slightly */
-.leaflet-control-attribution { font-size: 9px !important; opacity: 0.5; }
-.leaflet-control-zoom { border: none !important; box-shadow: 0 2px 12px rgba(0,0,0,.12) !important; }
-.leaflet-control-zoom a { background: var(--bg) !important; color: var(--text) !important; border-color: var(--border) !important; font-family: 'Inter', sans-serif !important; }
+.maplibregl-ctrl-attrib { font-size: 9px !important; opacity: 0.45 !important; }
+.maplibregl-ctrl-group { border: 1px solid var(--border) !important; box-shadow: 0 2px 12px rgba(0,0,0,.1) !important; border-radius: 10px !important; overflow: hidden; }
+.maplibregl-ctrl-group button { background: var(--bg) !important; border-bottom: 1px solid var(--border) !important; }
+.maplibregl-ctrl-group button:last-child { border-bottom: none !important; }
+.maplibregl-ctrl-group button span { filter: invert(0); }
 
 /* Header */
 .header {
   position: absolute;
-  top: 16px; left: 16px; right: 16px;
+  top: 14px; left: 14px; right: 14px;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -42,61 +45,29 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Inter', 
   background: var(--bg);
   padding: 10px 16px;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.1);
+  box-shadow: 0 2px 14px rgba(0,0,0,.1);
   border: 1px solid var(--border);
   white-space: nowrap;
 }
-.search-wrap {
-  flex: 1;
-  position: relative;
-}
-.search-wrap svg {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--muted);
-  pointer-events: none;
-}
+.search-wrap { flex: 1; position: relative; }
+.search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
 #search {
   width: 100%;
   padding: 11px 14px 11px 36px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 400;
   color: var(--text);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.1);
+  box-shadow: 0 2px 14px rgba(0,0,0,.1);
   outline: none;
   -webkit-appearance: none;
 }
 #search::placeholder { color: var(--muted); }
 #search:focus { border-color: var(--red); }
 
-/* Count pill */
-.count-pill {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--muted);
-  box-shadow: 0 2px 12px rgba(0,0,0,.1);
-  white-space: nowrap;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-.count-pill span { color: var(--red); font-weight: 600; }
-
-/* Slide-up card */
+/* Card */
 .card {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -104,56 +75,29 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Inter', 
   background: var(--bg);
   border-top: 1px solid var(--border);
   border-radius: 20px 20px 0 0;
-  padding: 20px 20px 36px;
+  padding: 20px 20px 40px;
   box-shadow: 0 -4px 32px rgba(0,0,0,.1);
   transform: translateY(100%);
   transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 .card.open { transform: translateY(0); }
-.card-handle {
-  width: 36px; height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  margin: 0 auto 16px;
-}
-.card-name {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-.card-address {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
+.card-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 18px; }
+.card-name { font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); margin-bottom: 4px; }
+.card-address { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
 .card-directions {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px 20px;
-  border-radius: 12px;
-  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--blue); color: #fff;
+  font-size: 14px; font-weight: 600;
+  padding: 12px 20px; border-radius: 12px; text-decoration: none;
 }
-.card-directions:hover { opacity: 0.9; }
 
 @media (min-width: 600px) {
   .card {
     left: auto; right: 20px; bottom: 20px;
-    width: 320px;
-    border-radius: 16px;
+    width: 320px; border-radius: 16px;
     border: 1px solid var(--border);
-    transform: translateY(20px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform: translateY(12px); opacity: 0; pointer-events: none;
+    transition: transform 0.22s ease, opacity 0.22s ease;
   }
   .card.open { transform: translateY(0); opacity: 1; pointer-events: all; }
   .card-handle { display: none; }
@@ -172,8 +116,6 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Inter', 
   </div>
 </div>
 
-
-
 <div class="card" id="card">
   <div class="card-handle"></div>
   <div class="card-name" id="card-name"></div>
@@ -186,95 +128,101 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Inter', 
 
 <script>
 const RED = '#E62336';
+let allSpots = [];
 
-const map = L.map('map', {
-  zoomControl: false,
-  attributionControl: true,
-}).setView([40.7128, -74.006], 12);
-
-L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-  subdomains: 'abcd',
-  maxZoom: 19,
-}).addTo(map);
-
-const markerIcon = L.divIcon({
-  className: '',
-  html: `<div style="width:12px;height:12px;background:${RED};border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)"></div>`,
-  iconSize: [12, 12],
-  iconAnchor: [6, 6],
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://tiles.openfreemap.org/styles/positron',
+  center: [-74.006, 40.7128],
+  zoom: 11.5,
+  pitchWithRotate: true,
 });
 
-const markerIconLarge = L.divIcon({
-  className: '',
-  html: `<div style="width:16px;height:16px;background:${RED};border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3)"></div>`,
-  iconSize: [16, 16],
-  iconAnchor: [8, 8],
-});
+map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-right');
 
 const card = document.getElementById('card');
 const cardName = document.getElementById('card-name');
 const cardAddress = document.getElementById('card-address');
 const cardDirections = document.getElementById('card-directions');
-
 const search = document.getElementById('search');
 
-let allSpots = [];
-let markers = [];
-let activeMarker = null;
+function toGeoJSON(spots) {
+  return {
+    type: 'FeatureCollection',
+    features: spots.map(s => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [s.longitude, s.latitude] },
+      properties: { name: s.name, address: s.address }
+    }))
+  };
+}
 
-function openCard(spot) {
-  cardName.textContent = spot.name;
-  cardAddress.textContent = spot.address;
-  cardDirections.href = `https://maps.apple.com/?daddr=${encodeURIComponent(spot.address)}&dirflg=d`;
+function openCard(props, coords) {
+  cardName.textContent = props.name;
+  cardAddress.textContent = props.address;
+  cardDirections.href = `https://maps.apple.com/?daddr=${encodeURIComponent(props.address)}&dirflg=d`;
   card.classList.add('open');
+  if (window.innerWidth < 600) map.easeTo({ center: coords, offset: [0, -120] });
 }
 
-function closeCard() {
-  card.classList.remove('open');
-  if (activeMarker) { activeMarker.setIcon(markerIcon); activeMarker = null; }
-}
+function closeCard() { card.classList.remove('open'); }
 
-function renderMarkers(spots) {
-  markers.forEach(m => m.remove());
-  markers = [];
-  
+map.on('load', () => {
+  map.addSource('spots', { type: 'geojson', data: toGeoJSON([]) });
 
-  spots.forEach(spot => {
-    const m = L.marker([spot.latitude, spot.longitude], { icon: markerIcon }).addTo(map);
-    m.on('click', () => {
-      if (activeMarker) activeMarker.setIcon(markerIcon);
-      m.setIcon(markerIconLarge);
-      activeMarker = m;
-      openCard(spot);
-      if (window.innerWidth < 600) map.panTo([spot.latitude, spot.longitude]);
-    });
-    markers.push(m);
+  map.addLayer({
+    id: 'spots-shadow',
+    type: 'circle',
+    source: 'spots',
+    paint: {
+      'circle-radius': 9,
+      'circle-color': 'rgba(0,0,0,0.15)',
+      'circle-translate': [0, 2],
+      'circle-blur': 1,
+    }
   });
-}
 
-map.on('click', closeCard);
+  map.addLayer({
+    id: 'spots',
+    type: 'circle',
+    source: 'spots',
+    paint: {
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 5, 15, 9],
+      'circle-color': RED,
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#ffffff',
+    }
+  });
+
+  map.on('click', 'spots', e => {
+    const f = e.features[0];
+    openCard(f.properties, f.geometry.coordinates);
+  });
+
+  map.on('click', e => {
+    const hits = map.queryRenderedFeatures(e.point, { layers: ['spots'] });
+    if (!hits.length) closeCard();
+  });
+
+  map.on('mouseenter', 'spots', () => map.getCanvas().style.cursor = 'pointer');
+  map.on('mouseleave', 'spots', () => map.getCanvas().style.cursor = '');
+
+  fetch('/api/spots')
+    .then(r => r.json())
+    .then(data => {
+      allSpots = data;
+      map.getSource('spots').setData(toGeoJSON(allSpots));
+    });
+});
 
 search.addEventListener('input', () => {
   const q = search.value.toLowerCase().trim();
-  const filtered = q ? allSpots.filter(s =>
-    s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q)
-  ) : allSpots;
-  renderMarkers(filtered);
+  const filtered = q
+    ? allSpots.filter(s => s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q))
+    : allSpots;
+  if (map.getSource('spots')) map.getSource('spots').setData(toGeoJSON(filtered));
   closeCard();
 });
-
-fetch('/api/spots')
-  .then(r => r.json())
-  .then(data => {
-    allSpots = data;
-    renderMarkers(allSpots);
-  })
-  .catch(() => {
-    countEl.textContent = '?';
-  });
 </script>
 </body>
 </html>
