@@ -213,6 +213,15 @@ nav {
 }
 .phones-track:active { cursor: grabbing; }
 .phones-track::-webkit-scrollbar { display: none; }
+@media (min-width: 1100px) {
+  .phones-track {
+    justify-content: center;
+    overflow-x: visible;
+    cursor: default;
+    flex-wrap: wrap;
+  }
+  .phones-track:active { cursor: default; }
+}
 .phone-wrap {
   flex-shrink: 0;
   scroll-snap-align: start;
@@ -377,8 +386,16 @@ footer {
   </div>
   <div class="phones-track" id="track">
     <div class="phone-wrap">
+      <div class="phone-frame"><img src="/screenshots/01-splash-intro.png" alt="Splash screen" loading="lazy"></div>
+      <p class="phone-caption">Sofra</p>
+    </div>
+    <div class="phone-wrap">
       <div class="phone-frame"><img src="/screenshots/02-map-overview.png" alt="Map overview" loading="lazy"></div>
       <p class="phone-caption">All spots on the map</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-frame"><img src="/screenshots/03-borough-coverage.png" alt="Borough coverage" loading="lazy"></div>
+      <p class="phone-caption">All five boroughs</p>
     </div>
     <div class="phone-wrap">
       <div class="phone-frame"><img src="/screenshots/04-pin-details.png" alt="Location details" loading="lazy"></div>
@@ -387,14 +404,6 @@ footer {
     <div class="phone-wrap">
       <div class="phone-frame"><img src="/screenshots/05-look-around.png" alt="Look Around" loading="lazy"></div>
       <p class="phone-caption">Look Around before you go</p>
-    </div>
-    <div class="phone-wrap">
-      <div class="phone-frame"><img src="/screenshots/03-borough-coverage.png" alt="Borough coverage" loading="lazy"></div>
-      <p class="phone-caption">All five boroughs</p>
-    </div>
-    <div class="phone-wrap">
-      <div class="phone-frame"><img src="/screenshots/01-splash-intro.png" alt="Splash screen" loading="lazy"></div>
-      <p class="phone-caption">Sofra</p>
     </div>
   </div>
 </section>

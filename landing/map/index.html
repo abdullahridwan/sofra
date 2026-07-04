@@ -172,7 +172,7 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Inter', 
   </div>
 </div>
 
-<div class="count-pill" id="count"><span id="count-n">0</span> halal spots</div>
+
 
 <div class="card" id="card">
   <div class="card-handle"></div>
@@ -218,7 +218,7 @@ const card = document.getElementById('card');
 const cardName = document.getElementById('card-name');
 const cardAddress = document.getElementById('card-address');
 const cardDirections = document.getElementById('card-directions');
-const countEl = document.getElementById('count-n');
+
 const search = document.getElementById('search');
 
 let allSpots = [];
@@ -240,7 +240,7 @@ function closeCard() {
 function renderMarkers(spots) {
   markers.forEach(m => m.remove());
   markers = [];
-  countEl.textContent = spots.length;
+  
 
   spots.forEach(spot => {
     const m = L.marker([spot.latitude, spot.longitude], { icon: markerIcon }).addTo(map);
