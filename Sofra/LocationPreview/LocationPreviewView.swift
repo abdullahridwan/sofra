@@ -18,6 +18,7 @@ struct LocationPreviewView: View {
     @Binding var mapPosition: MapCameraPosition
     @State var showFavoritesSheet = false
     @State private var locationManager = CLLocationManager()
+    @State private var isAtUserLocation = true
 
     var searchResults: [MyFavoriteLocation] {
         guard !searchText.isEmpty else { return [] }
@@ -43,9 +44,35 @@ struct LocationPreviewView: View {
             }
             .id(mapID)
             .onAppear { locationManager.requestWhenInUseAuthorization() }
-            .mapControls { MapUserLocationButton() }
+            .onMapCameraChange(frequency: .onEnd) { _ in isAtUserLocation = false }
 
             FavoritesButton(showFavoritesSheet: $showFavoritesSheet, searchText: $searchText)
+
+            if !isAtUserLocation {
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button {
+                            mapPosition = .userLocation(followsHeading: false, fallback: .automatic)
+                            isAtUserLocation = true
+                        } label: {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundStyle(SofraTheme.background)
+                                    .shadow(color: SofraTheme.text.opacity(0.15), radius: 10)
+                                Image(systemName: "location.fill")
+                                    .foregroundColor(SofraTheme.blue)
+                                    .font(.system(size: 15))
+                            }
+                        }
+                        .padding(.trailing)
+                        .padding(.bottom, 8)
+                        .transition(.scale(scale: 0.8).combined(with: .opacity))
+                    }
+                }
+            }
         }
         .safeAreaInset(edge: .bottom) {
             if let sel = selection, let item = myFavoriteLocations.first(where: { $0.id == sel }) {
