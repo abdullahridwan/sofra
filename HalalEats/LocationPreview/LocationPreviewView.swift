@@ -22,7 +22,7 @@ struct LocationPreviewView: View {
             Map(selection: $selection) {
                 ForEach(myFavoriteLocations) { location in
                     Marker(location.name, coordinate: location.getCoordinate2D())
-                        .tint(location.isFavorited ? .red : .orange)
+                        .tint(location.isFavorited ? SofraTheme.favorite : SofraTheme.primary)
                         
                 }
             }

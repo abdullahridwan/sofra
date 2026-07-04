@@ -21,7 +21,8 @@ struct SingleLocationView: View {
                 VStack(alignment: .leading){
                     HStack{
                         Text(item.name)
-                            .font(Font.headline)
+                            .font(SofraTheme.Typography.display(20, weight: .medium))
+                            .foregroundStyle(SofraTheme.text)
                         Spacer()
                         Button(action: {
                             print("In isFavorited Button")
@@ -32,11 +33,12 @@ struct SingleLocationView: View {
                             //try? context.save()
                         }) {
                             Image(systemName: item.isFavorited ? "heart.fill" : "heart")
-                                .foregroundColor(item.isFavorited ? .pink : .gray)
+                                .foregroundColor(item.isFavorited ? SofraTheme.favorite : SofraTheme.textMuted)
                         }
                     }
                     Text(item.address)
-                        .font(Font.subheadline)
+                        .font(SofraTheme.Typography.body(14))
+                        .foregroundStyle(SofraTheme.textMuted)
                     Button {
                         print("Directions")
                         print("\(item.name) is \(item.isFavorited)")
@@ -46,8 +48,9 @@ struct SingleLocationView: View {
 
                     } label: {
                         Text("Directions")
+                            .font(SofraTheme.Typography.label(14, weight: .semibold))
                     }
-                    .foregroundColor(.blue)
+                    .foregroundColor(SofraTheme.primary)
                 }
                 Spacer()
             }

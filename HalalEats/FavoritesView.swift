@@ -21,6 +21,8 @@ struct FavoritesView: View {
                     VStack{
                         Spacer()
                         Text("Looking empty. Favorite some places!")
+                            .font(SofraTheme.Typography.body(15))
+                            .foregroundStyle(SofraTheme.textMuted)
                         Spacer()
                     }
                 }else{
@@ -32,7 +34,7 @@ struct FavoritesView: View {
                                 .listRowBackground(
                                     RoundedRectangle(cornerRadius: 10)
                                         .background(.clear)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(SofraTheme.background)
                                         .padding(
                                             EdgeInsets(
                                                 top: 13,

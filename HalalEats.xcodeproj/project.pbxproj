@@ -28,6 +28,9 @@
 		B5CD7ADC2BBCA90800E3DA65 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ADB2BBCA90800E3DA65 /* SplashScreen.swift */; };
 		B5CD7ADE2BBCAE7300E3DA65 /* FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ADD2BBCAE7300E3DA65 /* FavoritesButton.swift */; };
 		B5CD7AE02BC0B83100E3DA65 /* EmojiSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ADF2BC0B83100E3DA65 /* EmojiSwitcher.swift */; };
+		4259367F70C79C7E4B044B90 /* Fraunces-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */; };
+		6B71A6CDB6A6995666FEC057 /* Inter-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46BB8E2F096F016148B310B /* Inter-Variable.ttf */; };
+		52642970326AEDDB72148BF5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F2B2115CF9D14246568576 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		B5CD7ADB2BBCA90800E3DA65 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		B5CD7ADD2BBCAE7300E3DA65 /* FavoritesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesButton.swift; sourceTree = "<group>"; };
 		B5CD7ADF2BC0B83100E3DA65 /* EmojiSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSwitcher.swift; sourceTree = "<group>"; };
+		004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fraunces-Variable.ttf"; sourceTree = "<group>"; };
+		A46BB8E2F096F016148B310B /* Inter-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Variable.ttf"; sourceTree = "<group>"; };
+		C7F2B2115CF9D14246568576 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +144,19 @@
 				B5CD7ADD2BBCAE7300E3DA65 /* FavoritesButton.swift */,
 				B5CD7ADF2BC0B83100E3DA65 /* EmojiSwitcher.swift */,
 				B521D71E2BF954F000717408 /* CustomIcon.swift */,
+				C7F2B2115CF9D14246568576 /* Theme.swift */,
+				435A801987584483F0C079CF /* Fonts */,
 			);
 			path = HalalEats;
+			sourceTree = "<group>";
+		};
+		435A801987584483F0C079CF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */,
+				A46BB8E2F096F016148B310B /* Inter-Variable.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B5CD7A922BB8776D00E3DA65 /* Preview Content */ = {
@@ -310,6 +327,8 @@
 				B5CD7A942BB8776D00E3DA65 /* Preview Assets.xcassets in Resources */,
 				B5CD7AB72BB8778800E3DA65 /* locations.json in Resources */,
 				B5CD7A902BB8776D00E3DA65 /* Assets.xcassets in Resources */,
+				4259367F70C79C7E4B044B90 /* Fraunces-Variable.ttf in Resources */,
+				6B71A6CDB6A6995666FEC057 /* Inter-Variable.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +368,7 @@
 				B5CD7A8C2BB8776A00E3DA65 /* HalalEatsApp.swift in Sources */,
 				B5CD7ABA2BB877AA00E3DA65 /* MyFavoriteLocationModel.swift in Sources */,
 				B5CD7ABE2BB877F900E3DA65 /* PreloadContainer.swift in Sources */,
+				52642970326AEDDB72148BF5 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

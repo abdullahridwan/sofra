@@ -19,12 +19,11 @@ struct FavoritesButton: View {
                     ZStack{
                         Circle()
                             .frame(width: 40, height: 40)
-                            .foregroundStyle(.white)
-                            .shadow(color: Color.gray.opacity(0.25), radius: 10)
+                            .foregroundStyle(SofraTheme.background)
+                            .shadow(color: SofraTheme.text.opacity(0.15), radius: 10)
                         Image(systemName: "heart.fill")
-                            .foregroundColor(.red)
+                            .foregroundColor(SofraTheme.favorite)
                             .font(.system(size: 20))
-                            .shadow(color: Color.red.opacity(0.2), radius: 6)
                             .padding()
                     }
                 })

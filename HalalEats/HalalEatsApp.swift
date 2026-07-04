@@ -12,6 +12,7 @@ import SwiftData
 struct HalalEatsApp: App {
     let modelContainer: ModelContainer
     init(){
+        FontRegistrar.registerCustomFonts()
         do {
             modelContainer = try ModelContainer(for: MyFavoriteLocation.self)
         }
