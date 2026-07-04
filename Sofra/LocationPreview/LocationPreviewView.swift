@@ -15,7 +15,9 @@ struct LocationPreviewView: View {
     @State private var selection: UUID?
     @State private var searchText = ""
     @Binding var myFavoriteLocations: [MyFavoriteLocation]
+    @Binding var mapPosition: MapCameraPosition
     @State var showFavoritesSheet = false
+    @State private var locationManager = CLLocationManager()
 
     var searchResults: [MyFavoriteLocation] {
         guard !searchText.isEmpty else { return [] }
@@ -32,13 +34,17 @@ struct LocationPreviewView: View {
 
     var body: some View {
         ZStack {
-            Map(selection: $selection) {
+            Map(position: $mapPosition, selection: $selection) {
+                UserAnnotation()
                 ForEach(searchText.isEmpty ? myFavoriteLocations : searchResults) { location in
                     Marker(location.name, coordinate: location.getCoordinate2D())
                         .tint(location.isFavorited ? SofraTheme.blue : SofraTheme.primary)
                 }
             }
             .id(mapID)
+            .onAppear {
+                locationManager.requestWhenInUseAuthorization()
+            }
 
             FavoritesButton(showFavoritesSheet: $showFavoritesSheet, searchText: $searchText)
         }
@@ -124,5 +130,5 @@ struct LocationPreviewView: View {
 }
 
 #Preview {
-    LocationPreviewView(myFavoriteLocations: .constant([]))
+    LocationPreviewView(myFavoriteLocations: .constant([]), mapPosition: .constant(.automatic))
 }

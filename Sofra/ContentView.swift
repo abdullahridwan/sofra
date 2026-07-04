@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var context
     @State private var isActive = false
     @State private var myFavoriteLocations: [MyFavoriteLocation] = []
+    @State private var mapPosition: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
 
     var body: some View {
         if isActive {
-            LocationPreviewView(myFavoriteLocations: $myFavoriteLocations)
-        }else {
+            LocationPreviewView(myFavoriteLocations: $myFavoriteLocations, mapPosition: $mapPosition)
+        } else {
             SplashScreen(isActive: $isActive, myFavoriteLocations: $myFavoriteLocations)
         }
     }
