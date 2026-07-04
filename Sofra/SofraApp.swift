@@ -10,21 +10,29 @@ import SwiftData
 
 @main
 struct SofraApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     let modelContainer: ModelContainer
-    init(){
+
+    init() {
         FontRegistrar.registerCustomFonts()
         do {
             modelContainer = try ModelContainer(for: MyFavoriteLocation.self)
-        }
-        catch {
+        } catch {
             fatalError("Error initializing Model Container")
         }
     }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [MyFavoriteLocation.self], isAutosaveEnabled: true)
-
+                .modelContainer(modelContainer)
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                Task { @MainActor in
+                    await LocationSyncService.sync(context: modelContainer.mainContext)
+                }
+            }
         }
     }
 }

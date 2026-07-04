@@ -13,7 +13,8 @@ import SwiftUI
 // Create an entity for a place
 @Model
 class MyFavoriteLocation: Identifiable, Equatable, Codable {
-    @Attribute(.unique) var id : UUID
+    @Attribute(.unique) var id: UUID
+    var remoteId: String?
     var name: String
     var address: String
     var latitude: Double
@@ -64,7 +65,7 @@ func loadLocationsFromJSON() -> [MyFavoriteLocation]{
         do {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
-            var myFavoriteLocations = try decoder.decode([LocationData].self, from: data).map { locationData in
+            let myFavoriteLocations = try decoder.decode([LocationData].self, from: data).map { locationData in
                 return MyFavoriteLocation(name: locationData.name,address: locationData.address, latitude: locationData.latitude, longitude: locationData.longitude, isFavorited: false)
             }
             return myFavoriteLocations

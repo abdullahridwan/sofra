@@ -38,17 +38,19 @@ struct SplashScreen: View {
             }
         }
         .onAppear {
-            var all_locations = loadLocationsFromJSON()
-            for l in all_locations {
-                addObjectIfNotExist(location: l)
+            // Seed from bundled JSON on first launch as an offline fallback
+            if (try? modelContext.fetch(FetchDescriptor<MyFavoriteLocation>()))?.isEmpty == true {
+                for l in loadLocationsFromJSON() { addObjectIfNotExist(location: l) }
             }
-
             loadLocations()
 
+            Task {
+                await LocationSyncService.sync(context: modelContext)
+                loadLocations()
+            }
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                withAnimation {
-                    self.isActive = true
-                }
+                withAnimation { self.isActive = true }
             }
         }
 
