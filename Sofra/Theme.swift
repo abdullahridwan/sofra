@@ -28,7 +28,6 @@ enum SofraTheme {
     static let text = Color(hex: "#2B2320")
     static let textMuted = Color(hex: "#7A6F66")
     static let primary = Color(hex: "#E62336")
-    static let primaryDark = Color(hex: "#B51C2C")
     static let blue = Color(hex: "#007AFF")
 
     enum Typography {

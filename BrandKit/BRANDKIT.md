@@ -26,7 +26,6 @@ A bold Fraunces "S," red on white, bled to the edges of the frame rather than ce
 | Text | `#2B2320` | Primary text (warm charcoal, not pure black) |
 | Text Muted | `#7A6F66` | Secondary text, addresses, captions |
 | Primary | `#E62336` | Vivid red — the brand accent. Map pins, active states, any brand moment |
-| Primary Dark | `#B51C2C` | Pressed/dark state of primary |
 | Blue | `#007AFF` | Apple-standard blue — bookmarked map pins, bookmark icons, Directions button |
 
 Two functional accents — red and blue — do all the work. Red owns brand moments and regular map pins. Blue is the action/navigation color: bookmarks, directions, anything the user does. Keep them separate; don't swap their roles.
