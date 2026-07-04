@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EA79B0B9F774246BAA24ABC /* LocationSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A539E0F08B4522BEB54753 /* LocationSyncService.swift */; };
+		4259367F70C79C7E4B044B90 /* Fraunces-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */; };
+		52642970326AEDDB72148BF5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F2B2115CF9D14246568576 /* Theme.swift */; };
+		6B71A6CDB6A6995666FEC057 /* Inter-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46BB8E2F096F016148B310B /* Inter-Variable.ttf */; };
 		B521D71F2BF954F000717408 /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521D71E2BF954F000717408 /* CustomIcon.swift */; };
 		B5CD7A8C2BB8776A00E3DA65 /* SofraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7A8B2BB8776A00E3DA65 /* SofraApp.swift */; };
 		B5CD7A8E2BB8776A00E3DA65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7A8D2BB8776A00E3DA65 /* ContentView.swift */; };
@@ -16,7 +20,6 @@
 		B5CD7AA82BB8776D00E3DA65 /* SofraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7AA72BB8776D00E3DA65 /* SofraUITests.swift */; };
 		B5CD7AAA2BB8776D00E3DA65 /* SofraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7AA92BB8776D00E3DA65 /* SofraUITestsLaunchTests.swift */; };
 		B5CD7AB72BB8778800E3DA65 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = B5CD7AB62BB8778800E3DA65 /* locations.json */; };
-		0EA79B0B9F774246BAA24ABC /* LocationSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A539E0F08B4522BEB54753 /* LocationSyncService.swift */; };
 		B5CD7ABA2BB877AA00E3DA65 /* MyFavoriteLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7AB92BB877AA00E3DA65 /* MyFavoriteLocationModel.swift */; };
 		B5CD7ABC2BB877D000E3DA65 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ABB2BB877D000E3DA65 /* CollectionModel.swift */; };
 		B5CD7ABE2BB877F900E3DA65 /* PreloadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ABD2BB877F900E3DA65 /* PreloadContainer.swift */; };
@@ -29,9 +32,6 @@
 		B5CD7ADC2BBCA90800E3DA65 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ADB2BBCA90800E3DA65 /* SplashScreen.swift */; };
 		B5CD7ADE2BBCAE7300E3DA65 /* FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ADD2BBCAE7300E3DA65 /* FavoritesButton.swift */; };
 		B5CD7AE02BC0B83100E3DA65 /* EmojiSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ADF2BC0B83100E3DA65 /* EmojiSwitcher.swift */; };
-		4259367F70C79C7E4B044B90 /* Fraunces-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */; };
-		6B71A6CDB6A6995666FEC057 /* Inter-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46BB8E2F096F016148B310B /* Inter-Variable.ttf */; };
-		52642970326AEDDB72148BF5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F2B2115CF9D14246568576 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fraunces-Variable.ttf"; sourceTree = "<group>"; };
+		45A539E0F08B4522BEB54753 /* LocationSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSyncService.swift; sourceTree = "<group>"; };
+		A46BB8E2F096F016148B310B /* Inter-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Variable.ttf"; sourceTree = "<group>"; };
 		B521D71E2BF954F000717408 /* CustomIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIcon.swift; sourceTree = "<group>"; };
 		B5CD7A882BB8776A00E3DA65 /* Sofra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sofra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CD7A8B2BB8776A00E3DA65 /* SofraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SofraApp.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		B5CD7AA72BB8776D00E3DA65 /* SofraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SofraUITests.swift; sourceTree = "<group>"; };
 		B5CD7AA92BB8776D00E3DA65 /* SofraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SofraUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B5CD7AB62BB8778800E3DA65 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
-		45A539E0F08B4522BEB54753 /* LocationSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSyncService.swift; sourceTree = "<group>"; };
 		B5CD7AB92BB877AA00E3DA65 /* MyFavoriteLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteLocationModel.swift; sourceTree = "<group>"; };
 		B5CD7ABB2BB877D000E3DA65 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
 		B5CD7ABD2BB877F900E3DA65 /* PreloadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadContainer.swift; sourceTree = "<group>"; };
@@ -78,8 +80,6 @@
 		B5CD7ADB2BBCA90800E3DA65 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		B5CD7ADD2BBCAE7300E3DA65 /* FavoritesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesButton.swift; sourceTree = "<group>"; };
 		B5CD7ADF2BC0B83100E3DA65 /* EmojiSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSwitcher.swift; sourceTree = "<group>"; };
-		004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fraunces-Variable.ttf"; sourceTree = "<group>"; };
-		A46BB8E2F096F016148B310B /* Inter-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Variable.ttf"; sourceTree = "<group>"; };
 		C7F2B2115CF9D14246568576 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		435A801987584483F0C079CF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */,
+				A46BB8E2F096F016148B310B /* Inter-Variable.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B5CD7A7F2BB8776A00E3DA65 = {
 			isa = PBXGroup;
 			children = (
@@ -150,15 +159,6 @@
 				435A801987584483F0C079CF /* Fonts */,
 			);
 			path = Sofra;
-			sourceTree = "<group>";
-		};
-		435A801987584483F0C079CF /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				004C1569361A1B061E0B24B4 /* Fraunces-Variable.ttf */,
-				A46BB8E2F096F016148B310B /* Inter-Variable.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B5CD7A922BB8776D00E3DA65 /* Preview Content */ = {
@@ -536,6 +536,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sofra - Halal Food NYC";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Sofra uses your location to show halal spots near you.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -553,7 +554,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahridwan.sofra";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahridwan.sofranyc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -576,6 +577,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sofra - Halal Food NYC";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Sofra uses your location to show halal spots near you.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -593,7 +595,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahridwan.sofra";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahridwan.sofranyc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -615,7 +617,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahridwan.sofra.SofraTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahridwan.sofra.SofraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -638,7 +640,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahridwan.sofra.SofraTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahridwan.sofra.SofraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -660,7 +662,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahridwan.sofra.SofraUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahridwan.sofra.SofraUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -682,7 +684,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahridwan.sofra.SofraUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abdullahridwan.sofra.SofraUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

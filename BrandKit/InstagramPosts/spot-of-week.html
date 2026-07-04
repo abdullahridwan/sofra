@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: 'Fraunces'; src: url('../Fraunces-Variable.ttf') format('truetype'); font-weight: 100 900; }
+@font-face { font-family: 'Inter'; src: url('../Inter-Variable.ttf') format('truetype'); font-weight: 100 900; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1080px; }
+.canvas {
+  width: 1080px; height: 1080px; background: #F6F4F2;
+  display: flex; flex-direction: column;
+  padding: 64px 72px 72px;
+}
+.label {
+  font-family: 'Inter'; font-weight: 700; font-size: 28px;
+  color: #E62336; letter-spacing: 0.09em;
+  margin-bottom: 28px;
+}
+.photo {
+  flex: 1;
+  min-height: 0;
+  border-radius: 36px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.name { font-family: 'Fraunces'; font-weight: 500; font-size: 72px; color: #2B2320; letter-spacing: -0.01em; line-height: 1; margin-bottom: 12px; }
+.meta { font-family: 'Inter'; font-weight: 500; font-size: 34px; color: #7A6F66; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="label">SPOT OF THE WEEK</div>
+  <div class="photo"><img src="source/namkeen-photo.png"></div>
+  <div class="name">Namkeen</div>
+  <div class="meta">338 Bedford Ave, Brooklyn</div>
+</div>
+</body></html>
