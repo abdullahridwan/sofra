@@ -16,6 +16,7 @@
 		B5CD7AA82BB8776D00E3DA65 /* SofraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7AA72BB8776D00E3DA65 /* SofraUITests.swift */; };
 		B5CD7AAA2BB8776D00E3DA65 /* SofraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7AA92BB8776D00E3DA65 /* SofraUITestsLaunchTests.swift */; };
 		B5CD7AB72BB8778800E3DA65 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = B5CD7AB62BB8778800E3DA65 /* locations.json */; };
+		0EA79B0B9F774246BAA24ABC /* LocationSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A539E0F08B4522BEB54753 /* LocationSyncService.swift */; };
 		B5CD7ABA2BB877AA00E3DA65 /* MyFavoriteLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7AB92BB877AA00E3DA65 /* MyFavoriteLocationModel.swift */; };
 		B5CD7ABC2BB877D000E3DA65 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ABB2BB877D000E3DA65 /* CollectionModel.swift */; };
 		B5CD7ABE2BB877F900E3DA65 /* PreloadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD7ABD2BB877F900E3DA65 /* PreloadContainer.swift */; };
@@ -64,6 +65,7 @@
 		B5CD7AA72BB8776D00E3DA65 /* SofraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SofraUITests.swift; sourceTree = "<group>"; };
 		B5CD7AA92BB8776D00E3DA65 /* SofraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SofraUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B5CD7AB62BB8778800E3DA65 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
+		45A539E0F08B4522BEB54753 /* LocationSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSyncService.swift; sourceTree = "<group>"; };
 		B5CD7AB92BB877AA00E3DA65 /* MyFavoriteLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteLocationModel.swift; sourceTree = "<group>"; };
 		B5CD7ABB2BB877D000E3DA65 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
 		B5CD7ABD2BB877F900E3DA65 /* PreloadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadContainer.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		B5CD7AB82BB8779D00E3DA65 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				45A539E0F08B4522BEB54753 /* LocationSyncService.swift */,
 				B5CD7AB92BB877AA00E3DA65 /* MyFavoriteLocationModel.swift */,
 				B5CD7ABB2BB877D000E3DA65 /* CollectionModel.swift */,
 				B5CD7ABD2BB877F900E3DA65 /* PreloadContainer.swift */,
@@ -366,6 +369,7 @@
 				B5CD7AC32BB8785200E3DA65 /* SingleLocationViewModel.swift in Sources */,
 				B5CD7ADE2BBCAE7300E3DA65 /* FavoritesButton.swift in Sources */,
 				B5CD7A8C2BB8776A00E3DA65 /* SofraApp.swift in Sources */,
+				0EA79B0B9F774246BAA24ABC /* LocationSyncService.swift in Sources */,
 				B5CD7ABA2BB877AA00E3DA65 /* MyFavoriteLocationModel.swift in Sources */,
 				B5CD7ABE2BB877F900E3DA65 /* PreloadContainer.swift in Sources */,
 				52642970326AEDDB72148BF5 /* Theme.swift in Sources */,
