@@ -25,10 +25,10 @@ A bold Fraunces "S," red on white, bled to the edges of the frame rather than ce
 | Border | `#E7E3DE` | Hairline dividers/borders |
 | Text | `#2B2320` | Primary text (warm charcoal, not pure black) |
 | Text Muted | `#7A6F66` | Secondary text, addresses, captions |
-| Primary | `#E62336` | Vivid red — the brand accent. Map pins, active states, any brand moment |
-| Blue | `#007AFF` | Apple-standard blue — bookmarked map pins, bookmark icons, Directions button |
+| Primary | `#E62336` | Vivid red. Brand accent, map pins, active states, any brand moment |
+| Blue | `#007AFF` | Apple-standard blue. Bookmarked map pins, bookmark icons, Directions button |
 
-Two functional accents — red and blue — do all the work. Red owns brand moments and regular map pins. Blue is the action/navigation color: bookmarks, directions, anything the user does. Keep them separate; don't swap their roles.
+Two functional accents: red and blue. Red owns brand moments and regular map pins. Blue is the action/navigation color: bookmarks, directions, anything the user does. Keep them separate; don't swap their roles.
 
 ## Typography
 
@@ -41,10 +41,10 @@ Both are variable fonts (`Fraunces-Variable.ttf`, `Inter-Variable.ttf` in this f
 
 `Sofra/Theme.swift` is the single source of truth in code, `SofraTheme` exposes the colors above and `SofraTheme.Typography` exposes the two type roles. Applied in:
 
-- `SplashScreen.swift` — wordmark, background
-- `LocationPreview/LocationPreviewView.swift` — map pin tint (primary for regular, blue for bookmarked); search filters visible pins
-- `SingleLocationView/SingleLocationView.swift` — restaurant name (text), address (textMuted), bookmark toggle (blue/textMuted), directions button (blue)
-- `FavoritesButton.swift` — Sofra wordmark pill (text/background), expandable search bar, bookmark bubble (blue)
-- `FavoritesView.swift` — bookmarked locations list
+- `SplashScreen.swift`: wordmark, background
+- `LocationPreview/LocationPreviewView.swift`: map pin tint (primary for regular, blue for bookmarked); search filters visible pins
+- `SingleLocationView/SingleLocationView.swift`: restaurant name (text), address (textMuted), bookmark toggle (blue/textMuted), directions button (blue)
+- `FavoritesButton.swift`: Sofra wordmark pill (text/background), expandable search bar, bookmark bubble (blue)
+- `FavoritesView.swift`: bookmarked locations list
 
 If the palette or type scale changes, update `Theme.swift` and this file together so they don't drift.
