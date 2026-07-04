@@ -11,7 +11,7 @@ A halal restaurant map for NYC. Browse the map, favorite spots, get directions, 
 Pre-launch. Core app works end to end; a few things are intentionally not built yet. If you're picking this up, here's the real state:
 
 **Working**
-- Map of ~120 halal spots across Brooklyn, Queens, Manhattan, and the Bronx, seeded from `Sofra/locations.json`
+- Map of 132 deduped halal spots across Brooklyn, Queens, Manhattan, and the Bronx, seeded from `Sofra/locations.json`
 - Tap a pin → name, address, a Look Around preview, favorite toggle, and a "Directions" button that opens Apple Maps
 - Favorites list
 - Brand identity (icon, fonts, colors) fully wired into the app, see [`BrandKit/`](BrandKit/)
@@ -19,7 +19,6 @@ Pre-launch. Core app works end to end; a few things are intentionally not built 
 **Not built yet, don't assume it exists**
 - No search or filtering (by cuisine, price, etc.)
 - No "use my location" / distance sorting, no `CLLocationManager` in the codebase yet
-- `locations.json` has a couple of known duplicate entries (e.g. "BK Jani" / "BK JANI") that need deduping before submission
 - Not yet submitted to the App Store
 
 ## Tech stack
@@ -56,8 +55,7 @@ Colors, type scale, wordmark, and icon source all live in [`BrandKit/BRANDKIT.md
 ## Roadmap
 
 Roughly in order:
-1. Dedupe `locations.json`
-2. "Use my location" + distance sort
-3. Basic search/filter
-4. Real App Store screenshots and listing copy
-5. Submit
+1. "Use my location" + distance sort
+2. Basic search/filter
+3. Real App Store screenshots and listing copy
+4. Submit

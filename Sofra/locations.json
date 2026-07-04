@@ -174,7 +174,7 @@
     "longitude": -73.80454541
   },
   {
-    "name": "Dar Al Yemen \u0645\u0637\u0639\u0645 \u062f\u0627\u0631 \u0627\u0644\u064a\u0645\u0646\u200e",
+    "name": "Dar Al Yemen مطعم دار اليمن‎",
     "address": "131-05 Rockaway Blvd, South Ozone Park, NY 11420",
     "latitude": 40.6754873,
     "longitude": -73.8138744
@@ -294,7 +294,7 @@
     "longitude": -73.995038
   },
   {
-    "name": "Kotti Berliner D\u00f6ner Kebab",
+    "name": "Kotti Berliner Döner Kebab",
     "address": "445 Albee Square W, Brooklyn, NY 11201",
     "latitude": 40.6912513,
     "longitude": -73.9831859
@@ -342,22 +342,10 @@
     "longitude": -73.84946225
   },
   {
-    "name": "BK JANI",
-    "address": "679 Grand St, Brooklyn, NY 11211",
-    "latitude": 40.71169345,
-    "longitude": -73.94529475
-  },
-  {
     "name": "BK Jani",
     "address": "679 Grand St, Brooklyn, NY 11211",
     "latitude": 40.71169345,
     "longitude": -73.94529475
-  },
-  {
-    "name": "Birdies",
-    "address": "810 Grand St, Brooklyn, NY 11206",
-    "latitude": 40.7117898,
-    "longitude": -73.9410835
   },
   {
     "name": "Birdies Hot Chicken",
@@ -654,7 +642,7 @@
     "longitude": -73.9209677
   },
   {
-    "name": "\u0106evabd\u017einica Sarajevo",
+    "name": "Ćevabdžinica Sarajevo",
     "address": "37-18 34th Ave, Queens, NY 11101",
     "latitude": 40.75701685,
     "longitude": -73.9219137
@@ -667,7 +655,7 @@
   },
   {
     "name": "Omar Mediterranean Cuisine",
-    "address": "154 E 55th St New York, Ny 10022",
+    "address": "154 E 55th St, New York, NY 10022",
     "latitude": 40.75905745,
     "longitude": -73.96925654
   },
@@ -780,7 +768,7 @@
     "longitude": -73.9586122
   },
   {
-    "name": "Pepo\u2019s Pizza",
+    "name": "Pepo’s Pizza",
     "address": "1522 Amsterdam Ave, New York, NY 10031",
     "latitude": 40.8191442,
     "longitude": -73.9522861
@@ -804,4 +792,3 @@
     "longitude": -73.8556304
   }
 ]
-
